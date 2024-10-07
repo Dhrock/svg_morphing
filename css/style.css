@@ -3,9 +3,12 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  /*
   background-color: #eacbcb;
+  */
 }
 svg {
+  background-color: cyan;
   width: 700px;
   height: 400px;
 }
