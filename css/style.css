@@ -3,12 +3,42 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /*
-  background-color: #eacbcb;
-  */
+  background-color: #ffffff;
 }
 svg {
-  background-color: cyan;
-  width: 700px;
+  width: 1000px;
+  height: 600px;
+}
+
+.mv-svg {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+}
+
+.mv-svg path{
+  transform: translate(calc(100vw - (717px + 300px )), calc(50vh - (813px/2)));
+}
+
+#svg_morphing,
+#maskPage #fixed{
+  position:fixed;
+  width: 1000px;
+  height:700px;
+  top:50%;
+  left:50%;
+  margin-left:-500px;
+  margin-top:-350px;  
+}
+
+.mask {
+  clip-path: url(#svgPath);
+}
+
+.img {
+  position: relative;
+  width: 750px;
   height: 400px;
 }

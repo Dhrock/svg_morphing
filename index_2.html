@@ -3,12 +3,17 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SVG MORPHING test</title>
         <script src="js/snap.svg-min.js"></script>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <svg id="svg_morphing" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 -100 300 300">
+        <svg id="svg_morphing" class="mv-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-100, -100, 500,500">
+            <clipPath id="svgPath">
+                <path d="M229.92,330.75c-94.26-15.77-181.51-60.78-215.27-151.3C-1.89,133.09-5.18,80.54,10.03,33.37,23.4-10.63,73.74-1.82,108.11,9.29c105.62,34.03,240.47,95.93,283.06,211.67,14.06,39.5,6.24,66.42-13.27,84.03-32.52,29.36-97.51,32.88-147.75,25.79l-.22-.03Z"></path>
+            </clipPath>
         </svg>
+        <image class="img mask" src="img/sample.jpg" clip-path="url(#svgPath)" ></image>
         <script src="js/script2.js"></script>
     </body>
 </html>
