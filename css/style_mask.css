@@ -1,3 +1,16 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+svg {
+width: 0;
+height: 0;
+position: absolute;
+}
+
 .mask{
     position: relative;
     width:400px;

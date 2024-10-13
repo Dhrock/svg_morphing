@@ -1,38 +1,33 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+html, body {
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #ffffff;
 }
-svg {
-  width: 1000px;
-  height: 600px;
+
+/* 動画コンテナのスタイル */
+.video-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.mv-svg {
+/* 動画のスタイル */
+.video-container video {
+  width: 100%;
+}
+
+svg {
   width: 0;
   height: 0;
   position: absolute;
 }
 
-.mv-svg path{
-
-}
-
-/* #svg_morphing {
-  display: block;
-  width: 1000px;
-  height:700px;
-  top:50%;
-  left:50%;
-  margin-left:-500px;
-  margin-top:-350px;  
-} */
-
 .mask {
   clip-path: url(#svgPath);
-  -webkit-clip-path: url(#svgPath);
 }
 
 .img {
