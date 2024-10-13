@@ -10,14 +10,11 @@ let path = ['M229.92,330.75c-94.26-15.77-181.51-60.78-215.27-151.3C-1.89,133.09-
 //morphing animation
 
 var $svg = Snap("#svg_morphing");
-
-console.log(path);
-
 var $pth = $svg.select('path');
 
 var i = 0;
 
-var duration = 30000; // アニメーション時間
+var duration = 10000; // アニメーション時間
 var easing = mina.easing; // Snap.svgで定義されているイージング関数
 
 function AnimationSVG() {
@@ -29,10 +26,11 @@ function AnimationSVG() {
     }
 
     $pth.animate({path: path[i],fill:'#ffffff'},duration,easing,AnimationSVG);
+
     /*
     var bbox = $pth.getBBox();
-	$svg.rect(bbox).attr({stroke: "black"});
-    $svg.selectAll("rect").attr({fill:"none"});
+    $svg.rect(bbox).attr({stroke: "black"});
+    $svg.selectAll("rect").attr({fill:"none"})
     */
 }
 AnimationSVG();
