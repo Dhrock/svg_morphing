@@ -24,10 +24,15 @@ svg {
   width: 0;
   height: 0;
   position: absolute;
+  
+}
+
+.path-transform {
+  transform: translate(0.25px,0px) scale(0.5,1);
 }
 
 .mask {
-  clip-path: url(#svgPath);
+  -webkit-clip-path: url(#svgPath);
 }
 
 .img {
