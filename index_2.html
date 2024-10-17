@@ -5,30 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>SVG MORPHING test</title>
         <script src="js/snap.svg-min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <svg id="svg_morphing" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
-            <defs>
-                <!-- objectBoundingBoxによって、マスク対象のローカル座標を原点とする01比率の変形座標をとる -->
-                <clipPath id="svgPath" clipPathUnits="objectBoundingBox">
-                    <!--
-                    <path d="M0.158,0.935 C0.046,0.879,0.003,0.81,0.001,0.731 c-0.001,-0.065,0.026,-0.137,0.066,-0.213 c0.032,-0.061,0.073,-0.124,0.115,-0.189 c0.053,-0.081,0.101,-0.157,0.151,-0.215 C0.384,0.056,0.44,0.013,0.506,0.004 c0.079,-0.012,0.168,0.021,0.222,0.05 c0.106,0.058,0.188,0.146,0.233,0.248 c0.058,0.132,0.057,0.288,-0.032,0.438 c-0.037,0.064,-0.09,0.114,-0.147,0.153 c-0.103,0.07,-0.223,0.102,-0.303,0.107 c-0.083,0.005,-0.164,-0.011,-0.164,-0.011 c-0.038,-0.008,-0.093,-0.022,-0.157,-0.054" transform="translate(0.265625,0.04) scale(0.464814375,0.9166666)"></path>
-                    -->
-                    <!-- 1280×720を600×600に正規化したsvgパス(scale(600/1280, 600/720))に対して、x:340px,y:28.8px移動させるtranslate((1280-600)/2/1280, 28.8/720)を追記. 要は、動画の中心を切り抜く-->
+        <div>
+            <svg id="svg_morphing" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+                <defs>
+                    <!-- objectBoundingBoxによって、マスク対象のローカル座標を原点とする01比率の変形座標をとる -->
+                    <clipPath id="svgPath" clipPathUnits="objectBoundingBox">
 
-                    <path id="path_scale" class="path-transform" d="m0.48,1 c-0.191,0.006,-0.447,-0.069,-0.476,-0.239 c-0.009,-0.07,0.012,-0.141,0.045,-0.21 c0.037,-0.076,0.089,-0.151,0.133,-0.223 c0.111,-0.175,0.199,-0.307,0.331,-0.326 c0.06,-0.009,0.13,0.006,0.215,0.051 c0.141,0.077,0.224,0.194,0.257,0.318 c0.042,0.159,0.001,0.331,-0.109,0.455 c-0.089,0.101,-0.224,0.169,-0.397,0.173"></path>
+                        <path id="path_scale" class="path-transform" d="m0.48,1 c-0.191,0.006,-0.447,-0.069,-0.476,-0.239 c-0.009,-0.07,0.012,-0.141,0.045,-0.21 c0.037,-0.076,0.089,-0.151,0.133,-0.223 c0.111,-0.175,0.199,-0.307,0.331,-0.326 c0.06,-0.009,0.13,0.006,0.215,0.051 c0.141,0.077,0.224,0.194,0.257,0.318 c0.042,0.159,0.001,0.331,-0.109,0.455 c-0.089,0.101,-0.224,0.169,-0.397,0.173"></path>
 
-                </clipPath>
-            </defs>
-        </svg>
-        <div class="video-container mask">
-            <video src="movie/240719_sample_v1 (720p).mp4" autoplay muted playsinline loop></video>
+                        <!-- 1280×720のムービーに対して、1×1の比率に正規化したsvgパスをtransformで移動、サイズ変更を行い、画像の左上を原点に相対位置でマスクをかける -->
+                        
+                    </clipPath>
+                </defs>
+            </svg>
+            <div class="container mask">
+                <video src="movie/20241017.mp4" autoplay muted playsinline loop></video>
+            </div>
         </div>
-        <!--
-        <image class="img mask" src="img/sample.jpg" clip-path="url(#svgPath)" ></image>
-        -->
+        
+        <div class="container">
+            <image class="img" src="img/sample.jpg" ></image>
+        </div>
+
         <script src="js/script2.js"></script>
+
     
     </body>
 </html>
