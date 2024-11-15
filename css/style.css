@@ -1,51 +1,121 @@
+@charset "UTF-8";
+/* =============================
+リセットcss 
+==============================*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-html, body {
-  display: block;
-  background-color: #ffffff;
-  min-height: 100vh;
+*::before, *::after {
   box-sizing: border-box;
 }
 
+main {
+  display: block;
+}
 
-/* 動画コンテナのスタイル */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
 
-.container {
+h1, h2, h3, h4, h5, h6, p, div {
+  overflow-wrap: break-word;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+iframe {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+span {
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+address {
+  font: inherit;
+}
+
+input, button, textarea, select {
+  color: inherit;
+  font: inherit;
+  vertical-align: middle;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.mv {
+  height: 100vh;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  margin: 5vh 0 30px 0;
 }
-
-.container img {
-  padding: 20vh 0 10vh 0;
-  width: 70%;
+.mv .mv-img {
+  height: 100%;
+  position: relative;
 }
-
-/* 動画のスタイル */
-.container video {
+.mv .mv-img video {
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+}
+.mv .mask {
+  -webkit-clip-path: url(#svgPath);
 }
 
 svg {
   width: 0;
   height: 0;
   position: absolute;
-  
 }
 
 .path-transform {
   transform-origin: 0.5px 0.5px;
-  transform: translate(0px,0px) scale(0.47,0.95);
+  transform: translate(0px, 0px) scale(0.47, 0.75);
 }
 
-.mask {
-  -webkit-clip-path: url(#svgPath);
+.secContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 200px 100px 50px 100px;
 }
+.secContainer_img {
+  width: 50%;
+}
+.secContainer_text {
+  max-width: 300px;
+  flex: 1;
+}
+.secContainer .secTtl {
+  font-size: 30px;
+}
+.secContainer .secDesc {
+  font-size: 15px;
+  margin-top: 20px;
+}/*# sourceMappingURL=style.css.map */
