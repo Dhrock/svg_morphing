@@ -9,7 +9,6 @@ const path_ori = [
 
 const path = [
     'm0.48,1 c-0.191,0.006,-0.447,-0.069,-0.476,-0.239 c-0.009,-0.07,0.012,-0.141,0.045,-0.21 c0.037,-0.076,0.089,-0.151,0.133,-0.223 c0.111,-0.175,0.199,-0.307,0.331,-0.326 c0.06,-0.009,0.13,0.006,0.215,0.051 c0.141,0.077,0.224,0.194,0.257,0.318 c0.042,0.159,0.001,0.331,-0.109,0.455 c-0.089,0.101,-0.224,0.169,-0.397,0.173',
-    'M0.408,1 c-0.084,0.006,-0.338,-0.008,-0.399,-0.208 c-0.031,-0.103,0.039,-0.222,0.095,-0.311 c0.063,-0.101,0.141,-0.236,0.234,-0.337 C0.43,0.043,0.538,-0.025,0.662,0.01 c0.083,0.023,0.161,0.074,0.222,0.143 c0.067,0.077,0.112,0.177,0.116,0.29 c0.008,0.201,-0.119,0.356,-0.21,0.425 c-0.152,0.127,-0.316,0.13,-0.383,0.131',
     'M0.289,1 c-0.042,0.002,-0.174,0.007,-0.252,-0.096 c-0.073,-0.094,-0.019,-0.197,0.036,-0.281 C0.197,0.441,0.361,0.28,0.514,0.139 C0.598,0.062,0.708,-0.007,0.808,0.002 c0.064,0.006,0.125,0.045,0.171,0.136 c0.034,0.067,0.028,0.172,-0.004,0.282 c-0.032,0.111,-0.089,0.227,-0.156,0.313 c-0.159,0.197,-0.37,0.259,-0.529,0.268',
     'M0.408,1 c-0.084,0.006,-0.338,-0.008,-0.399,-0.208 c-0.031,-0.103,0.039,-0.222,0.095,-0.311 c0.063,-0.101,0.141,-0.236,0.234,-0.337 C0.43,0.043,0.538,-0.025,0.662,0.01 c0.083,0.023,0.161,0.074,0.222,0.143 c0.067,0.077,0.112,0.177,0.116,0.29 c0.008,0.201,-0.119,0.356,-0.21,0.425 c-0.152,0.127,-0.316,0.13,-0.383,0.131',
     'M0.549,1 c-0.115,-0.003,-0.27,-0.031,-0.386,-0.102 C0.057,0.834,-0.016,0.732,0.005,0.579 c0.018,-0.136,0.078,-0.291,0.136,-0.412 C0.203,0.034,0.298,-0.021,0.433,0.01 c0.115,0.026,0.238,0.088,0.34,0.175 c0.102,0.088,0.184,0.202,0.216,0.333 c0.036,0.15,-0.009,0.269,-0.092,0.352 c-0.088,0.087,-0.22,0.134,-0.347,0.131',
@@ -21,21 +20,32 @@ var scale = ['0.4,0.4','0.3,0.7','0.1,0.1','0.2,0.3','0.4,0.8','0.5,0.5','0.25,0
 //morphing animation
 
 var snap = Snap("#svg_morphing");
-var snap_box = Snap(500,500);
 
 var pa = snap.select('path');
-var pbox = snap_box.selectAll('path_ori');
-
-console.log(pbox);
 
 var i = 0;
 
 var duration = 10000; // アニメーション時間
 var easing = mina.easing; // Snap.svgで定義されているイージング関数
 
-AnimationSVG();
+let fadeStartTime = null; // フェードアウト開始時刻
+const fadeDuration = 3000; // フェードアウト完了までの時間（ミリ秒）
+let isFadingOut = false; // フェードアウトが既に始まったかどうかを管理するフラグ
 
-Scroll();
+
+setTimeout(AnimationSVG,500);
+
+// スクロールイベントでフェードアウトをトリガー
+window.addEventListener('scroll', () => {
+
+    const scrollY = window.scrollY;
+    const triggerScroll = 1; // フェードアウト開始のスクロール量
+
+    if (scrollY > triggerScroll) {
+        startFadeOut();
+    }
+});
+
 
 function AnimationSVG() {
 
@@ -45,29 +55,51 @@ function AnimationSVG() {
         i = 0;
     }
 
-    // cssのtaransforの動的書き換え
-    
-    // const element = document.getElementById("path_scale");
-    
-    // element.style.transform = `translate(0.25px,0px) scale(${scale[i]})`;
-
-
-    pa.stop().animate({path: path[i]},duration,easing,AnimationSVG);
-
-    /*
-    var bbox = pa_box.getBBox();
-    console.log(bbox);
-    */
+    pa.animate({path: path[i]},duration,easing,AnimationSVG);
 }
 
 function Scroll() {
 
-    const element = document.getElementById("path_scale");
+    const triggerScroll = 50; // 拡大とフェードアウトを開始するスクロール量
 
     $(window).scroll(function () { 
-        if ($(this).scrollTop() >= 1) {
-            pa.stop();
-            snap.animate();
+        if ($(this).scrollTop() > triggerScroll) {
+            
         }
     });
+}
+
+
+function updateMaskSizeAndOpacity(timestamp) {
+    if (!fadeStartTime) fadeStartTime = timestamp; // 初回呼び出しで時刻を記録
+
+    const elapsed = timestamp - fadeStartTime; // 経過時間の計算
+    let scalex = 0.47;
+    let scaley = 0.95 // 初期のスケール
+
+    if (elapsed <= fadeDuration) {
+        // 経過時間に応じて拡大とフェードアウトを計算
+        scalex = 0.47 + (elapsed / fadeDuration) * 2; // 1 から 3 まで拡大
+        scaley = 0.95 + (elapsed / fadeDuration) * 2; // 1 から 3 まで拡大
+        opacity = 1 - (elapsed / fadeDuration);   // 1 から 0 までフェードアウト
+    } else {
+        // フェードアウト終了後、透明状態を維持
+        opacity = 0;
+    }
+
+    const element = document.getElementById("path_scale");
+    element.style.transform = `translate(0px,0px) scale(${scalex},${scaley})`;
+
+    // 次のフレームで再度実行
+    if (opacity > 0) {
+        requestAnimationFrame(updateMaskSizeAndOpacity);
+    }
+}
+
+// フェードアウトを開始する関数
+function startFadeOut() {
+    if (isFadingOut) return; // フェードアウトが既に始まっていれば何もしない
+    isFadingOut = true; // フェードアウト開始フラグをセット
+    fadeStartTime = null; // フェードアウト開始時刻をリセット
+    requestAnimationFrame(updateMaskSizeAndOpacity);
 }
