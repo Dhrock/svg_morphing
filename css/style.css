@@ -30,6 +30,12 @@ img {
   vertical-align: middle;
 }
 
+video {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
 iframe {
   max-width: 100%;
   vertical-align: middle;
@@ -72,12 +78,13 @@ button {
 .mv {
   height: 100vh;
   position: relative;
+  transition: 4s;
 }
-.mv .mv-img {
+.mv-img {
   height: 100%;
   position: relative;
 }
-.mv .mv-img video {
+.mv video {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -86,36 +93,47 @@ button {
   left: 0;
 }
 .mv .mask {
-  -webkit-clip-path: url(#svgPath);
+  -webkit-clip-path: url(#svg-mask);
+  clip-path: url(#svg-mask);
 }
 
 svg {
-  width: 0;
-  height: 0;
+  width: 0px;
+  height: 0px;
   position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible;
 }
 
 .path-transform {
-  transform-origin: 0.5px 0.5px;
-  transform: translate(0px, 0px) scale(0.47, 0.75);
+  transform: translate(50vw, 50vh) scale(2.6);
 }
 
 .secContainer {
+  background-color: blanchedalmond;
+}
+.secContainer .s-inner {
+  width: 80%;
   display: flex;
   justify-content: space-between;
-  margin: 200px 100px 50px 100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 .secContainer_img {
-  width: 50%;
-}
-.secContainer_text {
-  max-width: 300px;
+  max-width: 500px;
   flex: 1;
 }
+.secContainer_text {
+  width: 300px;
+}
 .secContainer .secTtl {
-  font-size: 30px;
+  font-size: 25px;
+  margin-top: 50px;
 }
 .secContainer .secDesc {
   font-size: 15px;
-  margin-top: 20px;
+  margin-top: 30px;
 }/*# sourceMappingURL=style.css.map */
