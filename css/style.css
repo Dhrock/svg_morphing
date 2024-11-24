@@ -75,12 +75,14 @@ button {
   cursor: pointer;
 }
 
+/* =============================
+メインページ
+==============================*/
 .mv {
   height: 100vh;
   position: relative;
-  transition: 4s;
 }
-.mv-img {
+.mv_img {
   height: 100%;
   position: relative;
 }
@@ -92,7 +94,7 @@ button {
   top: 0;
   left: 0;
 }
-.mv .mask {
+.mv .maskPath {
   -webkit-clip-path: url(#svg-mask);
   clip-path: url(#svg-mask);
 }
@@ -103,11 +105,20 @@ svg {
   position: absolute;
   top: 0;
   left: 0;
-  overflow: visible;
 }
 
 .path-transform {
-  transform: translate(50vw, 50vh) scale(2.6);
+  transform: translate(50vw, 50vh) scale(2.3);
+}
+
+.blur {
+  transition: 3s;
+  filter: blur(10px);
+}
+
+.fadeOut {
+  transition: 4s;
+  opacity: 0;
 }
 
 .secContainer {

@@ -10,18 +10,23 @@
     </head>
     <body>
         <section class="mv">
-            <svg id="svg-morphing" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-                <defs>
+            <!-- <video class="mv_img" src="movie/20241017.mp4" autoplay muted playsinline loop></video> -->
+            <defs>
+                <svg id="svg-morphing" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
                     <!-- objectBoundingBoxによって、マスク対象のローカル座標を原点とする01比率の変形座標をとる. もう一つは、userSpaceOnUse -->
+                    <!-- <mask id="svg-mask" maskContentUnits="userSpaceOnUse">
+                        <path id="svgScale" class="path-transform" d="M-4.1048 112.9943c-38.73 1.43-90.85-15.54-96.83-53.97-1.81-15.84 2.44-31.72 9.24-47.33 7.5-17.22 18.1-34.13 27.09-50.34C-42.0948-78.2257-24.1948-107.9057 2.7652-112.1257c12.25-1.92 26.37 1.42 43.64 11.47 28.61 17.49 45.58 43.73 52.23 71.89 8.46 35.84.19 74.8-22.11 102.79-18.11 22.72-45.46 38.22-80.62 38.97Z" fill="rgba(255,255,255,1)"></path>
+                    </mask> -->
                     <clipPath id="svg-mask" clipPathUnits="userSpaceOnUse">
                         <path id="svgScale" class="path-transform" d="M-4.1048 112.9943c-38.73 1.43-90.85-15.54-96.83-53.97-1.81-15.84 2.44-31.72 9.24-47.33 7.5-17.22 18.1-34.13 27.09-50.34C-42.0948-78.2257-24.1948-107.9057 2.7652-112.1257c12.25-1.92 26.37 1.42 43.64 11.47 28.61 17.49 45.58 43.73 52.23 71.89 8.46 35.84.19 74.8-22.11 102.79-18.11 22.72-45.46 38.22-80.62 38.97Z"></path>
-                        <!-- <path id="svgScale" class="path-transform" d="m0.48,1 c-0.191,0.006,-0.447,-0.069,-0.476,-0.239 c-0.009,-0.07,0.012,-0.141,0.045,-0.21 c0.037,-0.076,0.089,-0.151,0.133,-0.223 c0.111,-0.175,0.199,-0.307,0.331,-0.326 c0.06,-0.009,0.13,0.006,0.215,0.051 c0.141,0.077,0.224,0.194,0.257,0.318 c0.042,0.159,0.001,0.331,-0.109,0.455 c-0.089,0.101,-0.224,0.169,-0.397,0.173"></path> -->
-    
-                        <!-- 1280×720のムービーに対して、1×1の比率に正規化したsvgパスをtransformで移動、サイズ変更を行い、画像の左上を原点に相対位置でマスクをかける -->
                     </clipPath>
-                </defs>
-            </svg>
-            <video class="mv-img mask" src="movie/20241017.mp4" autoplay muted playsinline loop></video>
+                </svg>
+            </defs>
+            <div class="mv_img maskPath">
+                <video src="movie/20241017.mp4" autoplay muted playsinline loop></video>
+            </div>
+            <!-- <canvas id="canvas_mv" class="mv_background"></canvas> -->
+            <!-- <div id="mask_background" class="maskInset"></div> -->
         </section>
         
         <section class="secContainer">
@@ -33,7 +38,8 @@
                 <image class="secContainer_img" src="img/sample.jpg" width="700"></image>
             </div>
         </section>
+        
 
-        <script src="js/script2.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>

@@ -79,15 +79,17 @@ button {
 }
 
 
+/* =============================
+メインページ
+==============================*/
+
 .mv {
     height: 100vh;
     position: relative;
-    transition: 4s;
 
-    &-img {
+    &_img {
         height: 100%;
         position: relative;
-
     }
     video {
         width: 100%;
@@ -98,7 +100,33 @@ button {
         left: 0;
     }
 
-    .mask {
+    // .maskInset {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     background-color: black;
+    //     -webkit-mask-image: linear-gradient(#000,#000);
+    //     -webkit-mask-repeat: no-repeat;
+    //     mask-image: linear-gradient(#000,#000);
+    //     mask-repeat: no-repeat;
+    // }
+
+    .maskPath {
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // width: 100%;
+        // height: 100%;
+        // background-color: white;
+        // -webkit-mask-image: linear-gradient(#000,#000), url("#svg-mask");
+        // -webkit-mask-repeat: no-repeat;
+        // -webkit-mask-composite: source-out;
+        // mask-image: linear-gradient(#000,#000), url("#svg-mask");
+        // mask-repeat: no-repeat;
+        // mask-composite: exclude;
+
         -webkit-clip-path: url(#svg-mask);
         clip-path: url(#svg-mask);
     }
@@ -110,14 +138,22 @@ svg {
     position: absolute;
     top: 0;
     left: 0;
-    overflow: visible;
+    
 }
 
 .path-transform {
-    // transform: matrix(2.8,0,0,2.8,500,500);
-    transform: translate(50vw, 50vh) scale(2.6);
-    
+    transform: translate(50vw, 50vh) scale(2.3);
 }
+
+.blur {
+    transition: 3s;
+    filter: blur(10px);
+}
+.fadeOut {
+    transition: 4s;
+    opacity: 0;
+}
+
 
 .secContainer {
     background-color: blanchedalmond;
