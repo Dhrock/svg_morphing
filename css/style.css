@@ -93,10 +93,46 @@ button {
   object-fit: cover;
   top: 0;
   left: 0;
+  z-index: 1;
 }
-.mv .maskPath {
+.mv img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.mv .background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+.mv .clipPath {
+  transition: 1s;
   -webkit-clip-path: url(#svg-mask);
   clip-path: url(#svg-mask);
+}
+.mv .maskPath {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  -webkit-mask-image: linear-gradient(#fff, #fff);
+  mask-image: linear-gradient(#fff, #fff);
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 1;
+  transition: 1s;
 }
 
 svg {
@@ -117,10 +153,23 @@ svg {
 }
 
 .fadeOut {
-  transition: 4s;
+  transition: 2s;
   opacity: 0;
 }
 
+canvas {
+  border: 5px dotted blue;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+/* =============================
+セクション2
+==============================*/
 .secContainer {
   background-color: blanchedalmond;
 }

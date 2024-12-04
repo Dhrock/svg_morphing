@@ -1,0 +1,213 @@
+@charset "UTF-8";
+
+/* =============================
+リセットcss 
+==============================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    &::before, &::after {
+    box-sizing: border-box;
+    }
+}
+
+main {
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+h1, h2, h3, h4, h5, h6, p, div {
+    overflow-wrap: break-word;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+iframe {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+span {
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+address {
+  font: inherit;
+}
+
+input, button, textarea, select {
+  color: inherit;
+  font: inherit;
+  vertical-align: middle;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+
+/* =============================
+メインページ
+==============================*/
+
+.mv {
+    height: 100vh;
+    position: relative;
+
+    &_img {
+        height: 100%;
+        position: relative;
+    }
+    video {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+    img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+    }
+
+    .clipPath {
+        transition: 1s;
+        -webkit-clip-path: url(#svg-mask);
+        clip-path: url(#svg-mask);
+    }
+
+    .maskPath {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: green;
+        -webkit-mask-image: linear-gradient(#fff,#fff);
+        // -webkit-mask-repeat: no-repeat;
+        // -webkit-mask-composite: source-out;
+        mask-image: linear-gradient(#fff,#fff);
+        mask-repeat: no-repeat;
+        mask-composite: exclude;
+        opacity: 1;
+        transition: 1s;
+    }
+}
+
+svg {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+}
+
+.path-transform {
+    transform: translate(50vw, 50vh) scale(2.3);
+}
+
+.blur {
+    transition: 3s;
+    filter: blur(10px);
+}
+.fadeOut {
+    transition: 2s;
+    opacity: 0;
+}
+
+canvas {
+    border: 5px dotted blue;
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+/* =============================
+セクション2
+==============================*/
+
+.secContainer {
+    background-color: blanchedalmond;
+
+    .s-inner {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    &_img {
+        max-width: 500px;
+        flex: 1;
+    }
+    &_text {
+        width: 300px;
+    }
+
+    .secTtl {
+        font-size: 25px;
+        margin-top: 50px;
+    }
+    .secDesc {
+        font-size: 15px;
+        margin-top: 30px;
+    }
+}
+
